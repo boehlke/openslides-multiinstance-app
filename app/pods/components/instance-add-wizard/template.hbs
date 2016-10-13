@@ -1,0 +1,25 @@
+{{#advanced-context-menu parent=parent close=close extraClass="context-menu" containerClass="modal-dialog-tether context-menu-wrapper" as |menu|}}
+  {{#advanced-context-menu-item menu=menu extraClass="mod-profile-abstract" as |descend|}}
+    <ul class="context-menu-list">
+      <li><a {{action descend "change-role"}}>{{t 'change-board-role-template' role=(t member.roleI18nKey)}}</a>
+      </li>
+      <li><a {{action descend "change-labels"}}>{{t 'change-account-member-labels'}}
+        ...</a></li>
+      <li><a {{action 'removeFromEntity' member}}>{{t 'remove-member-from-entity-action'}}</a>
+      </li>
+      <li><a {{action 'removeFromBoard'}}>{{t 'remove-member-from-board-action'}}</a>
+      </li>
+    </ul>
+  {{/advanced-context-menu-item}}
+  {{#advanced-context-menu-item menu=menu name="change-role" title=(t 'change-board-role') hasBackButton=true as |descend back|}}
+    <ul class="context-menu-list">
+      <li>
+        <em><p>{{t 'account_admin_note'}}</p></em>
+        <a class="disabled">{{t 'board_admin_role'}}
+          <span class="glyphicon glyphicon-ok"></span>
+          <span class="sub-name">{{t 'board_admin_permissions'}}</span>
+        </a>
+      </li>
+    </ul>
+  {{/advanced-context-menu-item}}
+{{/advanced-context-menu}}

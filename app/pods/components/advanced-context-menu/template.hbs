@@ -1,0 +1,12 @@
+{{#tether-dialog target=parent
+  attachment='top left'
+  container-class=containerClass
+  targetAttachment='bottom left'
+  clickOutsideToClose=true
+  constraints=constraints
+  close='close'
+  title=" "}}
+  <div class="{{extraClasses}}">
+    {{yield this}}
+  </div>
+{{/tether-dialog}}

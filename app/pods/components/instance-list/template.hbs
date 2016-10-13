@@ -1,0 +1,11 @@
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>URL</th>
+    <th>Tagungsname</th>
+    <th>Status</th>
+  </tr>
+  {{#each model as |instance|}}
+    {{instance-list-item instance=instance}}
+  {{/each}}
+</table>

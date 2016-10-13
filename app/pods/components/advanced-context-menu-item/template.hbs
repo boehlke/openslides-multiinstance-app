@@ -1,0 +1,32 @@
+{{#if rendered}}
+    <div class="menu-dialog-wrapper">
+        <div>
+            {{#if (ifCond hasBackButton '||' (not hideCloseButton) '||' title)}}
+                <div class="context-menu-header">
+
+                  {{#if hasBackButton}}
+                      <a href="#" class="context-menu-header-back-btn header-button" {{action 'back'}}>
+                          <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                      </a>
+                  {{/if}}
+
+                  {{#if title}}
+                      <span class="context-menu-header-title">{{title}}</span>
+                  {{/if}}
+
+                  {{#unless hideCloseButton}}
+                      <a type="button" class="context-menu-header-close-btn header-button" aria-label="Close" {{action 'close'}}>
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                      </a>
+                  {{/unless}}
+                </div>
+            {{/if}}
+            <div>
+                <div class="context-menu-content"
+                     style="max-height: 257px;">
+                  {{yield (make-action this 'descend') (make-action this 'back')}}
+                </div>
+            </div>
+        </div>
+    </div>
+{{/if}}

@@ -1,0 +1,27 @@
+<h2>{{t 'instance_data'}}</h2>
+
+{{#with (changeset model validations) as |changeset|}}
+  {{#form-for changeset submit=(action 'submit') as |f|}}
+    {{f.text-field "slug"}}
+    {{f.select-field "osversion" options=versionOptions optionLabelPath="id"}}
+    {{!-- f.text-field "parent_domain"--}}
+
+    <h2>{{t 'event_data'}}</h2>
+
+    {{f.text-field "event_name"}}
+    {{f.text-field "event_description"}}
+    {{f.date-field "event_date"}}
+    {{f.text-field "event_location"}}
+    {{f.text-field "event_organizer"}}
+
+    <h2>{{t 'admin_data'}}</h2>
+
+    {{f.text-field "admin_first_name"}}
+    {{f.text-field "admin_last_name"}}
+    {{f.text-field "admin_initial_password"}}
+
+    {{f.reset  "Clear form"}}
+    {{f.submit "Create account"}}
+  {{/form-for}}
+{{/with}}
+
