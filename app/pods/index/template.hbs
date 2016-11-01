@@ -1,11 +1,7 @@
-{{!-- #modal-anchor as |dialog open close|}}
-  {{#if (get dialog 'isOpen')}}
-    {{instance-add-wizard parent=(concat '#item-' item.id) close=close}}
-  {{/if}}
-  <button id="{{concat 'item-' item.id}}" {{action open}}>ADD</button>
-{{/modal-anchor --}}
-
-
-{{#link-to 'instance-add' class="btn btn-primary"}}ADD{{/link-to}}
+<div style="position: absolute;
+    top: 20px;
+    right: 9%;">
+  {{#link-to 'instance-add' class="btn btn-primary"}}New{{/link-to}}
+</div>
 
 {{instance-list model=model}}

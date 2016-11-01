@@ -2,7 +2,7 @@ import DS from 'ember-data';
 
 export default DS.JSONAPIAdapter.extend({
   bulkCommit: true,
-  // namespace: 'api',
+  namespace: 'api',
   headers: {
     'Accept': 'application/vnd.app+json;version=1',
     'Content-Type': 'application/vnd.api+json',
@@ -12,11 +12,13 @@ export default DS.JSONAPIAdapter.extend({
   ajax: function(url, type, hash) {
     if (this.headers !== undefined) {
       var headers = this.headers;
-      hash.beforeSend = function (xhr) {
-        Ember.keys(headers).forEach(function(key) {
-          xhr.setRequestHeader(key, headers[key]);
-        });
-      };
+      if(hash) {
+        hash.beforeSend = function (xhr) {
+          Ember.keys(headers).forEach(function(key) {
+            xhr.setRequestHeader(key, headers[key]);
+          });
+        };
+      }
     }
     return this._super(url, type, hash);
   }

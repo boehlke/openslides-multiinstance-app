@@ -2,7 +2,15 @@
 
 {{#with (changeset model validations) as |changeset|}}
   {{#form-for changeset submit=(action 'submit') as |f|}}
-    {{f.text-field "slug"}}
+    {{#if (eq changeset.mode 'subdomain')}}
+      {{f.text-field "slug"}}
+      {{f.select-field "parent_domain" options=domainOptions optionLabelPath="domain" optionValuePath="domain" optionTargetPath="domainValue"}}
+
+      <div class="form-field">
+        <label class="form-field--label">Instanz-URL</label>
+        <span>https://{{changeset.slug}}.{{changeset.parent_domain}}</span>
+      </div>
+    {{/if}}
     {{f.select-field "osversion" options=versionOptions optionLabelPath="id"}}
     {{!-- f.text-field "parent_domain"--}}
 
@@ -10,7 +18,7 @@
 
     {{f.text-field "event_name"}}
     {{f.text-field "event_description"}}
-    {{f.date-field "event_date"}}
+    {{f.text-field "event_date"}}
     {{f.text-field "event_location"}}
     {{f.text-field "event_organizer"}}
 
@@ -18,9 +26,7 @@
 
     {{f.text-field "admin_first_name"}}
     {{f.text-field "admin_last_name"}}
-    {{f.text-field "admin_initial_password"}}
 
-    {{f.reset  "Clear form"}}
     {{f.submit "Create account"}}
   {{/form-for}}
 {{/with}}
