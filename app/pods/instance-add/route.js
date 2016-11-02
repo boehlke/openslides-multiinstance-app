@@ -6,7 +6,7 @@ export default Ember.Route.extend({
       const defaultVersion = versions.filterBy('default', true)[0];
       return this.store.createRecord('instance', {
         osversion: defaultVersion
-      })
+      });
     }.bind(this))
   },
   actions: {

@@ -23,7 +23,7 @@ export default DS.Model.extend({
   // Event attributes
   event_name: DS.attr('string'),
   event_description: DS.attr('string'),
-  event_date: DS.attr('date'),
+  event_date: DS.attr('string'),
   event_location: DS.attr('string'),
   event_organizer: DS.attr('string'),
 

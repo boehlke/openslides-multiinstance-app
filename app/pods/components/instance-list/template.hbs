@@ -1,13 +1,13 @@
 <table class="table table-striped table-bordered table-hover">
   <thead>
   <tr>
-    <th>Konferenzname</th>
+    <th>{{t 'event-name'}}</th>
     <th>URL</th>
-    <th>Status</th>
+    <th>{{t 'instance-status'}}</th>
   </tr>
   </thead>
   <tbody>
-  {{#each model as |instance|}}
+  {{#each savedInstances as |instance|}}
     {{instance-list-item instance=instance}}
   {{/each}}
   </tbody>

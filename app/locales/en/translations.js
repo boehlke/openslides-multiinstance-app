@@ -13,6 +13,14 @@ export default {
   'admin-last-name': 'Nachname',
   'admin-initial-password': 'Initialpasswort',
   'parent-domain': 'Domain',
-  'admin-username': 'Admin Username',
-  'superadmin-password': 'Superadmin Password'
+  'admin-username': 'Username',
+  'admin-password': 'Password',
+  'superadmin-password': 'Superadmin Password',
+  'local-admin-login': 'Local Administrator Login',
+  'super-admin-login': 'Super Administrator Login',
+  'instance-details': 'Details',
+  'action-stop-instance': 'Stop',
+  'action-delete-instance': 'Remove',
+  'instance-status': 'Status',
+  'new': 'New'
 };
