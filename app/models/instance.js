@@ -40,6 +40,5 @@ export default DS.Model.extend({
 
   superadmin_password: DS.attr('string'),
 
-  active: DS.attr('boolean'),
-  state: DS.attr('string') // created, installing, running, sleeping, error, inactive
+  state: DS.attr('string') // created, installing, running, sleeping, error, inactive, active
 });

@@ -1,7 +1,7 @@
 export default {
   'instance_data': 'Instance Data',
   'event_data': 'Event Data',
-  'admin_data': 'Administrator Data',
+  'admin_data': 'Local Administrator Data',
   'slug': 'Short Name',
   'osversion': 'OpenSlides Version',
   'event-name': 'Event Name',
@@ -22,5 +22,8 @@ export default {
   'action-stop-instance': 'Stop',
   'action-delete-instance': 'Remove',
   'instance-status': 'Status',
-  'new': 'New'
+  'new': 'New',
+  'action-start-instance': 'Start',
+  'new-instance': 'New OpenSlides instance',
+  'still-installing': 'Erstellen kann bis zu 2 Minuten dauern. Warten Sie bis Status auf "active" steht. Laden Sie regelmäßig die List View neu um den Status zu aktualisieren.'
 };

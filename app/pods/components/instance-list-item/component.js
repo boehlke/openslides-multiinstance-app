@@ -8,9 +8,16 @@ export default Ember.Component.extend({
     },
     stop: function() {
       this.set('instance.state', 'stopped');
+      this.get('instance').save();
+    },
+    start: function() {
+      this.set('instance.state', 'active');
+      this.get('instance').save();
     },
     remove: function() {
-      this.get('instance').destroyRecord();
+      if(confirm('Action cannot be undone')) {
+        this.get('instance').destroyRecord();
+      }
     }
   }
 });

@@ -1,6 +1,14 @@
 <tr {{action 'toggleDetails'}}>
   <td>{{instance.event_name}}</td>
-  <td><a href="{{instance.url}}">{{instance.url}}</a></td>
+  <td>
+    {{#if (eq instance.state 'active')}}
+      <a href={{instance.url}}>{{instance.url}}</a>
+    {{else if (eq instance.state 'sleeping')}}
+      <a href={{instance.url}}>{{instance.url}}</a>
+    {{else}}
+      <p class="small" style="max-width: 200px">{{t 'still-installing'}}</p>
+    {{/if}}
+  </td>
   <td>
     {{#if (eq instance.state 'active')}}
       <span class="label label-success">active</span>
@@ -35,31 +43,38 @@
           <span class="caption">{{t 'super-admin-login'}}</span>
           <table>
             <tr>
-              <td>{{t 'admin-username'}}</td><td>{{ instance.admin_username }}</td>
+              <td>{{t 'admin-username'}}</td>
+              <td>{{ instance.admin_username }}</td>
             </tr>
             <tr>
-              <td>{{t 'admin-password'}}</td><td>{{ instance.admin_initial_password }}</td>
+              <td>{{t 'admin-password'}}</td>
+              <td>{{ instance.admin_initial_password }}</td>
             </tr>
           </table>
           <span class="caption">{{t 'local-admin-login'}}</span>
           <table>
             <tr>
-              <td>{{t 'admin-username'}}</td><td>admin</td>
+              <td>{{t 'admin-username'}}</td>
+              <td>admin</td>
             </tr>
             <tr>
-              <td>{{t 'admin-password'}}</td><td>{{ instance.superadmin_password }}</td>
+              <td>{{t 'admin-password'}}</td>
+              <td>{{ instance.superadmin_password }}</td>
             </tr>
           </table>
         </div>
         <div class="col-lg-4">
           <div class="btn-group-vertical" role="group" aria-label="...">
-            <!--button type="button" class="btn btn-default" {{action 'remove'}}>{{t 'action-delete-instance'}}</button-->
-            {{!--#if (eq instance.state 'active')}}
+            <button type="button" class="btn btn-default" {{action 'remove'}}>{{t 'action-delete-instance'}}</button>
+            {{#if (eq instance.state 'active')}}
               <button type="button" class="btn btn-default" {{action 'stop'}}>{{t 'action-stop-instance'}}</button>
             {{/if}}
             {{#if (eq instance.state 'sleeping')}}
               <button type="button" class="btn btn-default" {{action 'stop'}}>{{t 'action-stop-instance'}}</button>
-            {{/if--}}
+            {{/if}}
+            {{#if (eq instance.state 'stopped')}}
+              <button type="button" class="btn btn-default" {{action 'start'}}>{{t 'action-start-instance'}}</button>
+            {{/if}}
           </div>
         </div>
       </div>
