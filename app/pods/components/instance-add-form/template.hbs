@@ -9,14 +9,19 @@
       {{f.select-field "parent_domain" options=domainOptions optionLabelPath="domain" optionValuePath="domain" optionTargetPath="domainValue"}}
 
       <div class="form-field">
-        <label class="form-field--label">Instanz-URL</label>
+        <label class="form-field--label">{{t 'instance-url'}}</label>
         <span>https://{{changeset.slug}}.{{changeset.parent_domain}}</span>
       </div>
     {{/if}}
     {{f.select-field "osversion" options=versionOptions optionLabelPath="id"}}
-    {{!-- f.text-field "parent_domain"--}}
 
     <h3>{{t 'event_data'}}</h3>
+
+    <div class="form-field">
+      <label class="form-field--label">{{t 'projector-logo'}}</label>
+
+      {{instance-projector-logo model=model}}
+    </div>
 
     {{f.text-field "event_name"}}
     {{f.text-field "event_description"}}

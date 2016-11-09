@@ -52,7 +52,7 @@ export default Ember.Component.extend({
       domain: '---',
       domainValue: null
     })]);
-    return domainOptions.concat(this.get('allDomains').map(function(domainData) {
+    return domainOptions.concat(this.get('allDomains').map(function (domainData) {
       return Ember.Object.create({
         id: domainData.get('id'),
         domain: domainData.get('domain'),

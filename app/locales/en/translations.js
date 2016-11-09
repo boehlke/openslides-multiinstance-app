@@ -25,5 +25,12 @@ export default {
   'new': 'New',
   'action-start-instance': 'Start',
   'new-instance': 'New OpenSlides instance',
+  'instance-url': 'Instanz-URL',
+  'projector-logo': 'Projector logo',
+  'upload_logo': 'Hochladen',
+  'remove_logo': 'Löschen',
+  'delete': 'Delete',
+  'close': 'Close',
+  'upload_projector_logo': 'Upload projector logo',
   'still-installing': 'Erstellen kann bis zu 2 Minuten dauern. Warten Sie bis Status auf "active" steht. Laden Sie regelmäßig die List View neu um den Status zu aktualisieren.'
 };

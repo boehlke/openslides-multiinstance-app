@@ -18,6 +18,9 @@ export default Ember.Component.extend({
       if(confirm('Action cannot be undone')) {
         this.get('instance').destroyRecord();
       }
+    },
+    uploaded: function (blobIds) {
+      this.get('instance').save();
     }
   }
 });
