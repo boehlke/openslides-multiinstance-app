@@ -1,27 +1,40 @@
-<h2>{{t 'instance_data'}}</h2>
+<h2>{{t 'new-instance'}}</h2>
+
+<h3>{{t 'instance_data'}}</h3>
 
 {{#with (changeset model validations) as |changeset|}}
   {{#form-for changeset submit=(action 'submit') as |f|}}
-    {{f.text-field "slug"}}
-    {{f.select-field "osversion" options=versionOptions optionLabelPath="id"}}
-    {{!-- f.text-field "parent_domain"--}}
+    {{#if (eq changeset.mode 'subdomain')}}
+      {{f.text-field "slug"}}
+      {{f.select-field "parent_domain" options=domainOptions optionLabelPath="domain" optionValuePath="domain" optionTargetPath="domainValue"}}
 
-    <h2>{{t 'event_data'}}</h2>
+      <div class="form-field">
+        <label class="form-field--label">{{t 'instance-url'}}</label>
+        <span>https://{{changeset.slug}}.{{changeset.parent_domain}}</span>
+      </div>
+    {{/if}}
+    {{f.select-field "osversion" options=versionOptions optionLabelPath="id"}}
+
+    <h3>{{t 'event_data'}}</h3>
+
+    <div class="form-field">
+      <label class="form-field--label">{{t 'projector-logo'}}</label>
+
+      {{instance-projector-logo model=model}}
+    </div>
 
     {{f.text-field "event_name"}}
     {{f.text-field "event_description"}}
-    {{f.date-field "event_date"}}
+    {{f.text-field "event_date"}}
     {{f.text-field "event_location"}}
     {{f.text-field "event_organizer"}}
 
-    <h2>{{t 'admin_data'}}</h2>
+    <h3>{{t 'admin_data'}}</h3>
 
     {{f.text-field "admin_first_name"}}
     {{f.text-field "admin_last_name"}}
-    {{f.text-field "admin_initial_password"}}
 
-    {{f.reset  "Clear form"}}
-    {{f.submit "Create account"}}
+    {{f.submit "Create instance"}}
   {{/form-for}}
 {{/with}}
 

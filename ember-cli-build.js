@@ -12,6 +12,8 @@ module.exports = function(defaults) {
     }
   });
 
+  app.import('bower_components/ember-droplet/dist/ember-droplet.js');
+
   var extraAssets = new Funnel('bower_components/bootstrap-sass/assets/fonts/bootstrap', {
     srcDir: '/',
     // include: ['**/*.woff', '**/stylesheet.css'],

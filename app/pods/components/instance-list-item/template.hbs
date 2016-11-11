@@ -1,6 +1,87 @@
-<tr>
-  <td>{{instance.id}}</td>
-  <td>{{instance.url}}</td>
+<tr {{action 'toggleDetails'}}>
   <td>{{instance.event_name}}</td>
-  <td>{{instance.state}}</td>
+  <td>
+    {{#if (eq instance.state 'active')}}
+      <a href={{instance.url}}>{{instance.url}}</a>
+    {{else if (eq instance.state 'sleeping')}}
+      <a href={{instance.url}}>{{instance.url}}</a>
+    {{else}}
+      <p class="small" style="max-width: 200px">{{t 'still-installing'}}</p>
+    {{/if}}
+  </td>
+  <td>
+    {{#if (eq instance.state 'active')}}
+      <span class="label label-success">active</span>
+    {{else if (eq instance.state 'sleeping')}}
+      <span class="label label-default">sleeping</span>
+    {{else if (eq instance.state 'installing')}}
+      <span class="label label-danger">installing</span>
+    {{else if (eq instance.state 'stopped')}}
+      <span class="label label-danger">stopped</span>
+    {{else if (eq instance.state 'error')}}
+      <span class="label label-danger">error</span>
+    {{/if}}
+  </td>
 </tr>
+{{#if detailsOpen}}
+  <tr {{action 'toogleDetails'}}>
+    <td colspan="3">
+
+      <div class="row">
+
+        <div class="col-lg-4">
+          <span class="caption">{{t 'instance-details'}}</span>
+          <ul>
+            <li>{{t 'event-location'}}: {{ instance.event_location }}</li>
+            <li>{{t 'event-description'}}: {{ instance.event_decription }}</li>
+            <li>{{t 'event-date'}}: {{ instance.event_date }}</li>
+            <li>{{t 'event-organizer'}}: {{ instance.event_organizer }}</li>
+            <li>{{t 'admin-first-name'}}: {{ instance.admin_first_name }}</li>
+            <li>{{t 'admin-last-name'}}: {{ instance.admin_last_name }}</li>
+          </ul>
+        </div>
+        <div class="col-lg-3">
+          <span class="caption">{{t 'super-admin-login'}}</span>
+          <table>
+            <tr>
+              <td>{{t 'admin-username'}}</td>
+              <td>{{ instance.admin_username }}</td>
+            </tr>
+            <tr>
+              <td>{{t 'admin-password'}}</td>
+              <td>{{ instance.admin_initial_password }}</td>
+            </tr>
+          </table>
+          <span class="caption">{{t 'local-admin-login'}}</span>
+          <table>
+            <tr>
+              <td>{{t 'admin-username'}}</td>
+              <td>admin</td>
+            </tr>
+            <tr>
+              <td>{{t 'admin-password'}}</td>
+              <td>{{ instance.superadmin_password }}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-lg-3">
+          {{instance-projector-logo model=instance uploaded='uploaded'}}
+        </div>
+        <div class="col-lg-2">
+          <div class="btn-group-vertical" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" {{action 'remove'}}>{{t 'action-delete-instance'}}</button>
+            {{#if (eq instance.state 'active')}}
+              <button type="button" class="btn btn-default" {{action 'stop'}}>{{t 'action-stop-instance'}}</button>
+            {{/if}}
+            {{#if (eq instance.state 'sleeping')}}
+              <button type="button" class="btn btn-default" {{action 'stop'}}>{{t 'action-stop-instance'}}</button>
+            {{/if}}
+            {{#if (eq instance.state 'stopped')}}
+              <button type="button" class="btn btn-default" {{action 'start'}}>{{t 'action-start-instance'}}</button>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+{{/if}}
