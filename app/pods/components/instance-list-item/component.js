@@ -8,15 +8,27 @@ export default Ember.Component.extend({
     },
     stop: function() {
       this.set('instance.state', 'stopped');
-      this.get('instance').save();
+      this.set('saving', true);
+      this.get('instance').save().finally(() => {
+        this.set('saving', false);
+        this.sendAction('update');
+      });
     },
     start: function() {
       this.set('instance.state', 'active');
-      this.get('instance').save();
+      this.set('saving', true);
+      this.get('instance').save().finally(() => {
+        this.set('saving', false);
+        this.sendAction('update');
+      });
     },
     remove: function() {
       if(confirm('Action cannot be undone')) {
-        this.get('instance').destroyRecord();
+        this.set('saving', true);
+        this.get('instance').destroyRecord().finally(() => {
+          this.set('saving', false);
+          this.sendAction('update');
+        });
       }
     },
     uploaded: function (blobIds) {
