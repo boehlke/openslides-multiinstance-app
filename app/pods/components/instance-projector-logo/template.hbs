@@ -1,0 +1,16 @@
+{{#if model.projector_logo }}
+  <div id="logo-wrapper">
+    <img style="width: 100px" src={{ model.projector_logo_url }}/>
+
+    <div class="btn btn-primary" {{action 'removeProjectorLogo'}}>{{t 'remove_logo'}}</div>
+    <div class="btn btn-primary" {{action 'uploadProjectorLogo'}}>{{t 'upload_logo'}}</div>
+  </div>
+{{else}}
+  <div>
+    <div class="btn btn-primary" {{action 'uploadProjectorLogo'}}>{{t 'upload_logo'}}</div>
+  </div>
+{{/if}}
+
+{{#if isShowingModal}}
+  {{upload-dialog close="uploaded" title=(t "upload_projector_logo")}}
+{{/if}}
