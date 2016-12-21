@@ -1,4 +1,4 @@
-# Openslides-multiinstance-app
+# Multi instance frontend app for OpenSlides
 
 This README outlines the details of collaborating on this Ember application.
 A short introduction of this app could easily go here.
@@ -20,16 +20,16 @@ You will need the following things properly installed on your computer.
 * `npm install`
 * `./node-module/.bin/bower install`
 
-## Running / Development
+## Running / development
 
 * `ember server`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
-### Code Generators
+### Code generators
 
 Make use of the many generators for code, try `ember help generate` for more details
 
-### Running Tests
+### Running tests
 
 * `ember test`
 * `ember test --server`
@@ -39,9 +39,61 @@ Make use of the many generators for code, try `ember help generate` for more det
 * `ember build` (development)
 * `ember build --environment production` (production)
 
-### Deploying
+## Deploying on Debian Jessie
 
-Specify what it takes to deploy your app.
+### Add user to run the front end
+
+    useradd -m -s /bin/bash openslides
+
+### Install dependencies from Debian
+
+    apt-get install npm nodejs-legacy
+
+### Install NPM packages not provided by Debian
+
+    npm install -g bower
+    npm install -g ember-cli
+
+### Clone repository
+
+    su - openslides
+    git clone https://github.com/OpenSlides/openslides-multiinstance-app.git
+
+### Install various remaining dependencies
+
+    cd ~openslides/openslides-multiinstance-app
+    npm install
+    bower install
+
+### Test: Run in foreground
+
+    ember server
+
+### Systemd service file example
+
+`/etc/systemd/system/openslides-frontend.service`:
+
+    [Unit]
+    Description=OpenSlides Multi-Instance front end
+    Wants=network.target
+
+    [Service]
+    WorkingDirectory=/home/openslides/openslides-multiinstance-app
+    ExecStart=/usr/local/bin/ember server
+    User=openslides
+
+    [Install]
+    WantedBy=multi-user.target
+
+### TODO
+* Good enough to run as same user as the backend?
+* This installs components locally inside the repository; is that a good idea?
+
+## Accessing instances
+
+Instances will be assigned subdomains of the configured domain, so you will
+probably want to configure a wildcard DNS record.
+
 
 ## Further Reading / Useful Links
 
