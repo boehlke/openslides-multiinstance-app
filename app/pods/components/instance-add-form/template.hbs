@@ -17,24 +17,28 @@
 
     <h3>{{t 'event_data'}}</h3>
 
+    {{f.text-field "event_name"}}
+    {{f.text-field "event_description"}}
+    {{f.text-field "event_date"}}
+    {{f.text-field "event_location"}}
+    {{f.text-field "event_organizer"}}
+    
     <div class="form-field">
       <label class="form-field--label">{{t 'projector-logo'}}</label>
 
       {{instance-projector-logo model=model}}
     </div>
 
-    {{f.text-field "event_name"}}
-    {{f.text-field "event_description"}}
-    {{f.text-field "event_date"}}
-    {{f.text-field "event_location"}}
-    {{f.text-field "event_organizer"}}
-
     <h3>{{t 'admin_data'}}</h3>
 
     {{f.text-field "admin_first_name"}}
     {{f.text-field "admin_last_name"}}
 
-    {{f.submit "Create instance"}}
+    <p></p>
+    <p>
+      {{f.submit "Save"}}
+      <a href="/" class="btn btn-default">{{t 'cancel'}}</a>
+    </p>
   {{/form-for}}
 {{/with}}
 

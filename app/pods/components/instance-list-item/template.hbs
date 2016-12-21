@@ -31,18 +31,18 @@
 
       <div class="row">
 
-        <div class="col-lg-4">
+        <div class="col-sm-4">
           <span class="caption">{{t 'instance-details'}}</span>
           <ul>
             <li>{{t 'event-location'}}: {{ instance.event_location }}</li>
-            <li>{{t 'event-description'}}: {{ instance.event_decription }}</li>
+            <li>{{t 'event-description'}}: {{ instance.event_description }}</li>
             <li>{{t 'event-date'}}: {{ instance.event_date }}</li>
             <li>{{t 'event-organizer'}}: {{ instance.event_organizer }}</li>
             <li>{{t 'admin-first-name'}}: {{ instance.admin_first_name }}</li>
             <li>{{t 'admin-last-name'}}: {{ instance.admin_last_name }}</li>
           </ul>
         </div>
-        <div class="col-lg-3">
+        <div class="col-sm-3">
           <span class="caption">{{t 'local-admin-login'}}</span>
           <table>
             <tr>
@@ -67,21 +67,33 @@
             </tr>
           </table>
         </div>
-        <div class="col-lg-3">
+        <div class="col-sm-3">
           {{instance-projector-logo model=instance uploaded='uploaded'}}
         </div>
-        <div class="col-lg-2">
+        <div class="col-sm-2">
           <div class="btn-group-vertical" role="group" aria-label="...">
-            <button type="button" disabled={{saving}} class="btn btn-default" {{action 'remove'}}>{{t 'action-delete-instance'}}</button>
             {{#if (eq instance.state 'active')}}
-              <button type="button" disabled={{saving}} class="btn btn-default" {{action 'stop'}}>{{t 'action-stop-instance'}}</button>
+              <button type="button" disabled={{saving}} class="btn btn-sm btn-default" {{action 'stop'}}>
+		<span class="glyphicon glyphicon-stop" aria-hidden="true"></span>	
+		{{t 'action-stop-instance'}}
+	      </button>
             {{/if}}
             {{#if (eq instance.state 'sleeping')}}
-              <button type="button" disabled={{saving}} class="btn btn-default" {{action 'stop'}}>{{t 'action-stop-instance'}}</button>
+              <button type="button" disabled={{saving}} class="btn btn-sm btn-default" {{action 'stop'}}>
+		<span class="glyphicon glyphicon-stop" aria-hidden="true"></span>	
+		{{t 'action-stop-instance'}}
+	      </button>
             {{/if}}
             {{#if (eq instance.state 'stopped')}}
-              <button type="button" disabled={{saving}} class="btn btn-default" {{action 'start'}}>{{t 'action-start-instance'}}</button>
+              <button type="button" disabled={{saving}} class="btn btn-sm btn-default" {{action 'start'}}>
+		<span class="glyphicon glyphicon-play" aria-hidden="true"></span>	
+		{{t 'action-start-instance'}}
+	      </button>
             {{/if}}
+            <button type="button" disabled={{saving}} class="btn btn-sm btn-danger" {{action 'remove'}}>
+		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>	
+		{{t 'action-delete-instance'}}
+	    </button>
           </div>
         </div>
       </div>
