@@ -1,7 +1,12 @@
-<div style="position: absolute;
-    top: 20px;
-    right: 9%;">
-  {{#link-to 'instance-add' class="btn btn-primary"}}{{t 'new' }}{{/link-to}}
+<div class="pull-right spacer-bottom">
+  {{#link-to 'instance-add' class="btn btn-sm btn-primary"}}
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>	
+    {{t 'new' }}
+  {{/link-to}}
+  <a href="/" class="btn btn-sm btn-default">
+    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>	
+    {{t 'refresh'}}
+  </a>
 </div>
 
 {{instance-list model=model update='update'}}
