@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export function makeDate(date) {
   if (date === undefined) {
     date = moment();

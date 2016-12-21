@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 function replaceSpecialChars(adminFirstName) {
   return adminFirstName.replace(/[áàâä]/g, 'a')

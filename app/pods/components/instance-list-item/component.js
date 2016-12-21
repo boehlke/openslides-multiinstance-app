@@ -31,7 +31,7 @@ export default Ember.Component.extend({
         });
       }
     },
-    uploaded: function (blobIds) {
+    uploaded: function () {
       this.get('instance').save();
     }
   }

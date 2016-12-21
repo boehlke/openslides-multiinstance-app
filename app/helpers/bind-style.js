@@ -4,8 +4,8 @@ function bindStyleHelper(args, attrs) {
     var ret = [];
     var style = [];
 
-    var attrKeys = Object.keys(attrs).filter(function(item, index, self) {
-        return (item.indexOf("unit") == -1) && (item !== "static");
+    var attrKeys = Object.keys(attrs).filter(function(item) {
+        return (item.indexOf("unit") === -1) && (item !== "static");
     });
 
     // For each attribute passed, create an observer and emit the
