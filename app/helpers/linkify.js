@@ -7,7 +7,7 @@ function urlify(text) {
     });
 }
 
-export default Ember.Helper.helper(function(args, options) {
+export default Ember.Helper.helper(function(args) {
     var text = args[0];
     return Ember.String.htmlSafe(urlify(text));
 });

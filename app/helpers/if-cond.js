@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.Helper.helper(function(args,options) {
+export default Ember.Helper.helper(function(args) {
     var v1 = args[0];
     var operator = args[1];
     var v2 = args[2];

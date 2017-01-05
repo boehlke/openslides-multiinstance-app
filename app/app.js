@@ -2,7 +2,7 @@ import Ember from 'ember';
 import Resolver from './resolver';
 import loadInitializers from 'ember-load-initializers';
 import config from './config/environment';
-import Pretender from 'pretender';
+//import Pretender from 'pretender';
 
 import FormFieldComponent from 'ember-form-for/components/form-field';
 

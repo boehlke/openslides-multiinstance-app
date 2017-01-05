@@ -7,10 +7,10 @@ export default Ember.Route.extend({
       return this.store.createRecord('instance', {
         osversion: defaultVersion
       });
-    }.bind(this))
+    }.bind(this));
   },
   actions: {
-    instanceSaved: function(instance) {
+    instanceSaved: function() {
       this.transitionTo('index');
     }
   }
