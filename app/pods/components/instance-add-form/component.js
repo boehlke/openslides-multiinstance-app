@@ -14,18 +14,6 @@ export default Ember.Component.extend({
     'parent_domain': [
       validatePresence(true)
     ],
-    'event_description': [
-      validatePresence(true)
-    ],
-    'event_date': [
-      validatePresence(true)
-    ],
-    'event_location': [
-      validatePresence(true)
-    ],
-    'event_organizer': [
-      validatePresence(true)
-    ],
     'admin_first_name': [
       validatePresence(true)
     ],

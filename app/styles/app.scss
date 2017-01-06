@@ -150,7 +150,21 @@ ul.context-menu-list {
 
 
 .form-field label {
-  width: 200px;
+  width: 220px;
+}
+.form-field--has-errors label, .form-field--errors {
+  color: #a94442;
+}
+.form-field--has-errors .form-field--control {
+  border-color: #a94442;
+  border-width: 2px;
+  border-style: solid;
+}
+.form-field--errors, .form-field--errors div {
+  display: inline;
+}
+.form-field--errors div {
+  font-size: 85%;
 }
 
 .caption {
