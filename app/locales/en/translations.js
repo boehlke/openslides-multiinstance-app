@@ -32,6 +32,7 @@ export default {
   'remove_logo': 'Remove',
   'delete': 'Delete',
   'close': 'Close',
+  'save': 'Spave',
   'cancel': 'Cancel',
   'upload_projector_logo': 'Upload projector logo',
   'still-installing': 'It can take up to two minutes to create the instance. Wait until the status is set to "active". Reload this page regularly to update the status.'

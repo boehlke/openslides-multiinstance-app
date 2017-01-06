@@ -6,7 +6,9 @@ export default Ember.Helper.helper(function(args) {
     var v2 = args[2];
     switch (operator) {
         case '==':
+            /* jshint ignore:start */
             return (v1 == v2) ? true : false;
+            /* jshint ignore:end */
         case '===':
             return (v1 === v2) ? true : false;
         case '===':
@@ -14,7 +16,9 @@ export default Ember.Helper.helper(function(args) {
         case '!==':
             return (v1 !== v2) ? true : false;
         case '!=':
+            /* jshint ignore:start */
             return (v1 != v2) ? true : false;
+            /* jshint ignore:end */
         case '<':
             return (v1 < v2) ? true : false;
         case '<=':

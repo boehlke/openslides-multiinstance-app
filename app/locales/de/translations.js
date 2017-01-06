@@ -32,6 +32,7 @@ export default {
   'remove_logo': 'Logo löschen',
   'delete': 'Löschen',
   'close': 'Schließen',
+  'save': 'Speichern',
   'cancel': 'Abbrechen',
   'upload_projector_logo': 'Projektor-Logo hochladen',
   'still-installing': 'Das Erstellen kann bis zu 2 Minuten dauern. Warten Sie, bis der Status auf "active" steht. Laden Sie regelmäßig dise Seite neu, um den Status zu aktualisieren.'
