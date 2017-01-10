@@ -8,7 +8,7 @@
   </thead>
   <tbody>
   {{#each sortedInstances as |instance|}}
-    {{instance-list-item instance=instance update='update'}}
+    {{instance-list-item instance=instance update='update' removeInstance='removeInstance'}}
   {{/each}}
   </tbody>
 </table>
