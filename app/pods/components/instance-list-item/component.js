@@ -23,13 +23,7 @@ export default Ember.Component.extend({
       });
     },
     remove: function() {
-      if(confirm('Action cannot be undone')) {
-        this.set('saving', true);
-        this.get('instance').destroyRecord().finally(() => {
-          this.set('saving', false);
-          this.sendAction('update');
-        });
-      }
+      this.sendAction('removeInstance', this.get('instance'));
     },
     uploaded: function () {
       this.get('instance').save();

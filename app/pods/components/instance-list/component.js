@@ -14,9 +14,19 @@ export default Ember.Component.extend({
 	}.bind(this);
 	setInterval(3000, refresh);
     }.on('init'),
-  actions: {
-    update: function() {
-      this.sendAction('update');
+    actions: {
+      removeInstance: function(instance) {
+        if(confirm('Action cannot be undone')) {
+          this.set('saving', true);
+	  this.get('model').removeObject(instance);
+	  instance.destroyRecord().finally(() => {
+            this.set('saving', false);
+            this.sendAction('update');
+          });
+        }
+      },
+      update: function() {
+        this.sendAction('update');
+      }
     }
-  }
 });
