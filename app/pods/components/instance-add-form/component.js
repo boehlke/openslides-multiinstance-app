@@ -26,7 +26,8 @@ export default Ember.Component.extend({
     if (!this.get('allVersions.isFulfilled')) {
       return [];
     }
-    return this.get('allVersions').toArray();
+    const versions = this.get('allVersions').toArray();
+    return versions;
   }.property('allVersions.isFulfilled'),
   domainOptions: function () {
     if (!this.get('allDomains.isFulfilled')) {
@@ -57,9 +58,9 @@ export default Ember.Component.extend({
         if (!changeset.get('isValid')) {
           return false;
         }
-        if (!this.get('model.osversion.content')) {
-          this.set('model.error.osversion', {'validation': ['Cannot be blank']});
-          return;
+        if (!this.get('changeset.osversion.content')) {
+          const versions = this.get('allVersions').toArray();
+            changeset.set('osversion', versions[0]);
         }
         changeset.save().then(function (instance) {
           this.sendAction('saved', instance);
