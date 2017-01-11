@@ -14,11 +14,18 @@
 
     {{content-for "head-footer"}}
   </head>
-  <body class="container">
+  <body>
 
     <script src="assets/vendor.js"></script>
     <script src="assets/openslides-multiinstance-app.js"></script>
 
-    {{content-for "body-footer"}}
+    <div id="wrapper">
+      <div id="header">
+        <a href="/"><img src="/openslides-logo-dark.png" class="logo"></a>
+        <div class="title">Manager</div>
+      </div>
+      {{content-for "body-footer"}}
+    </div>
+
   </body>
 </html>
