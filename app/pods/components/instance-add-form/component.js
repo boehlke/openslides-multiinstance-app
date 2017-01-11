@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Changeset from 'ember-changeset';
 import {
   validatePresence,
 } from 'ember-changeset-validations/validators';
@@ -21,7 +22,19 @@ export default Ember.Component.extend({
       validatePresence(true)
     ]
   },
+
   store: Ember.inject.service(),
+
+  changeset: function() {
+    if (!this.get('allVersions.isFulfilled')) {
+      return null;
+    }
+    let changeset = new Changeset(this.get('model'), this.get('validations'));
+    const defaultVersion = this.get('allVersions').filterBy('default', true)[0];
+    changeset.set('osversion', defaultVersion);
+    return changeset;
+  }.property('model', 'allVersions.isFulfilled'),
+
   versionOptions: function () {
     if (!this.get('allVersions.isFulfilled')) {
       return [];
@@ -29,6 +42,7 @@ export default Ember.Component.extend({
     const versions = this.get('allVersions').toArray();
     return versions;
   }.property('allVersions.isFulfilled'),
+
   domainOptions: function () {
     if (!this.get('allDomains.isFulfilled')) {
       return [];
@@ -46,21 +60,24 @@ export default Ember.Component.extend({
       });
     }));
   }.property('allDomains.isFulfilled'),
+
   allVersions: function () {
     return this.get('store').findAll('osversion');
   }.property(),
+
   allDomains: function () {
     return this.get('store').findAll('osdomain');
   }.property(),
+
   actions: {
     submit: function (changeset) {
       return changeset.validate().then(function () {
         if (!changeset.get('isValid')) {
           return false;
         }
-        if (!this.get('changeset.osversion.content')) {
+        if (!changeset.get('osversion.id')) {
           const versions = this.get('allVersions').toArray();
-            changeset.set('osversion', versions[0]);
+          changeset.set('osversion', versions[0]);
         }
         changeset.save().then(function (instance) {
           this.sendAction('saved', instance);
@@ -68,5 +85,4 @@ export default Ember.Component.extend({
       }.bind(this));
     }
   }
-
 });

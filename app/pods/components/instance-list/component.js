@@ -16,7 +16,7 @@ export default Ember.Component.extend({
     }.on('init'),
     actions: {
       removeInstance: function(instance) {
-        if(confirm('Action cannot be undone')) {
+        if(confirm('Do you really want to remove this instance?')) {
           this.set('saving', true);
 	  this.get('model').removeObject(instance);
 	  instance.destroyRecord().finally(() => {

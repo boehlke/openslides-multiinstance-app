@@ -19,65 +19,6 @@ FormFieldComponent.reopen({
   })
 });
 
-//new Pretender(function () {
-//  this.get('openslides-versions', function() {
-//    return [200, {'content-type': 'application/json;charset=utf-8'}, JSON.stringify(
-//      {
-//        data: [
-//          {
-//            "id": "1.0",
-//            "type": "openslides-version",
-//            "attributes": {
-//              "name": "1.0",
-//              "image": "asdf"
-//            }
-//          }
-//        ]
-//      }
-//    )];
-//  });
-//  this.post('instances', function(request) {
-//    const data = JSON.parse(request.requestBody);
-//    data.attributes;
-//    data.osversion;
-//    const admin = data.relationships.admin.data;
-//    return [200, {'content-type': 'application/json;charset=utf-8'}, request.requestBody];
-//  });
-//  this.get("instances", function (response) {
-//    return [200, {'content-type': 'application/json;charset=utf-8'}, JSON.stringify(
-//      {
-//        data: [
-//          {
-//            "id": "7",
-//            "type": "instance",
-//            "slug": "konferenz",
-//            "domain": "dbg.de",
-//            "osversion": "2.1.2",
-//            "event": 7,
-//            "relationships": {
-//              "event": {
-//                "data": {
-//                  "id": "7_event",
-//                  "type": "event"
-//                }
-//              }
-//            }
-//          }
-//        ],
-//        included: [
-//          {
-//            "type": "events",
-//            "id": "7_event",
-//            "attributes": {
-//              "name": "Konferenz"
-//            }
-//          }
-//        ]
-//      }
-//    )];
-//  });
-//});
-
 let App;
 
 Ember.MODEL_FACTORY_INJECTIONS = true;
