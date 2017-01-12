@@ -1,35 +1,36 @@
 import Ember from 'ember';
 import Changeset from 'ember-changeset';
+import lookupValidator from 'ember-changeset-validations';
 import {
   validatePresence,
 } from 'ember-changeset-validations/validators';
 
 export default Ember.Component.extend({
-  validations: {
-    'slug': [
-      validatePresence(true)
-    ],
-    'event_name': [
-      validatePresence(true)
-    ],
-    'parent_domain': [
-      validatePresence(true)
-    ],
-    'admin_first_name': [
-      validatePresence(true)
-    ],
-    'admin_last_name': [
-      validatePresence(true)
-    ]
-  },
-
   store: Ember.inject.service(),
 
   changeset: function() {
     if (!this.get('allVersions.isFulfilled')) {
       return null;
     }
-    let changeset = new Changeset(this.get('model'), this.get('validations'));
+
+      const validations = {
+	  'slug': [
+	      validatePresence(true)
+	  ],
+	  'event_name': [
+	      validatePresence(true)
+	  ],
+	  'parent_domain': [
+	      validatePresence(true)
+	  ],
+	  'admin_first_name': [
+	      validatePresence(true)
+	  ],
+	  'admin_last_name': [
+	      validatePresence(true)
+	  ]
+      };
+      let changeset = new Changeset(this.get('model'), lookupValidator(validations), validations);
     const defaultVersion = this.get('allVersions').filterBy('default', true)[0];
     changeset.set('osversion', defaultVersion);
     return changeset;
