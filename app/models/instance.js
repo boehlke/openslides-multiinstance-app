@@ -1,11 +1,13 @@
 import DS from 'ember-data';
 import Ember from 'ember';
+import config from '../config/environment';
 
 function replaceSpecialChars(adminFirstName) {
   return adminFirstName.replace(/[áàâä]/g, 'a')
     .replace(/[úùûü]/g, 'u')
     .replace(/[^A-Za-z0-9\-_]/g, '-');
 }
+
 export default DS.Model.extend({
   slug: DS.attr('string'),
   parent_domain: DS.attr('string'),

@@ -2,10 +2,9 @@
 <h2>{{t 'new-instance'}}</h2>
 
 <h3>{{t 'instance_data'}}</h3>
-
 {{#if changeset}}
 {{#form-for changeset submit=(action 'submit') as |f|}}
-  {{#if (eq changeset.mode 'subdomain')}}
+  {{#if (ifCond (eq changeset.mode 'subdomain') '||' (eq changeset.mode 'subdomain_nossl'))}}
     {{f.text-field "slug"}}
     {{f.select-field "parent_domain" options=domainOptions optionLabelPath="domain" optionValuePath="domain" optionTargetPath="domainValue"}}
 
