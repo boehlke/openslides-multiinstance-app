@@ -27,6 +27,9 @@ export default Ember.Component.extend({
     },
     uploaded: function () {
       this.get('instance').save();
+    },
+    upgradeInstance: function() {
+      this.sendAction('upgradeInstance', this.get('instance'));
     }
   }
 });

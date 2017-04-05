@@ -1,9 +1,7 @@
 import Ember from 'ember';
 import Changeset from 'ember-changeset';
 import lookupValidator from 'ember-changeset-validations';
-import {
-  validatePresence,
-} from 'ember-changeset-validations/validators';
+import {validatePresence} from 'ember-changeset-validations/validators';
 
 const validations = {
   'slug': [
@@ -40,90 +38,54 @@ const validations = {
 
 export default Ember.Component.extend({
   store: Ember.inject.service(),
-
   changeset: function () {
-    if (!this.get('defaultVersion')) {
-      return null;
-    }
-
-    let changeset = new Changeset(this.get('model'), lookupValidator(validations), validations);
-    const defaultVersion = this.get('defaultVersion');
-    changeset.set('osversion', defaultVersion);
-    return changeset;
-
-  }.property('defaultVersion'),
-
-  defaultVersion: function () {
-    if (!this.get('allVersions.isFulfilled')) {
-      return null;
-    }
-    const allVersions = this.get('allVersions');
-    return allVersions.filterBy('default', true)[0] || allVersions[0];
-  }.property('model', 'allVersions.isFulfilled'),
-
-  versionOptions: function () {
-    if (!this.get('allVersions.isFulfilled')) {
-      return [];
-    }
-    const versions = this.get('allVersions').toArray();
-    return versions;
-  }.property('allVersions.isFulfilled'),
+    return new Changeset(this.get('instance'), lookupValidator(validations), validations);
+  }.property('instance'),
 
   domainOptions: function () {
-    if (!this.get('allDomains.isFulfilled')) {
-      return [];
-    }
-    var domainOptions = Ember.A([Ember.Object.create({
+    const domainOptions = Ember.A([Ember.Object.create({
       id: null,
       domain: '---',
       domainValue: null
     })]);
-    return domainOptions.concat(this.get('allDomains').map(function (domainData) {
+    return domainOptions.concat(this.get('domains').map(function (domainData) {
       return Ember.Object.create({
         id: domainData.get('id'),
         domain: domainData.get('domain'),
         domainValue: domainData.get('domain')
       });
     }));
-  }.property('allDomains.isFulfilled'),
-
-  allVersions: function () {
-    return this.get('store').findAll('osversion');
-  }.property(),
-
-  allDomains: function () {
-    return this.get('store').findAll('osdomain');
-  }.property(),
+  }.property('domains'),
 
   actions: {
-    submit: function (changeset) {
-      return changeset.validate().then(function () {
-        if (!changeset.get('isValid')) {
-          return false;
+    submit: async function (changeset) {
+      await changeset.validate();
+
+      const instanceList = await this.get('store').findAll('instance');
+      let valid = true;
+      const domain = `${changeset.get('slug')}.${changeset.get('parent_domain')}`;
+
+      instanceList.forEach((existingInstance) => {
+        if (existingInstance.get('id') && existingInstance.get('domain').toLowerCase() === domain.toLowerCase()) {
+          changeset.addError('slug', ['already taken']);
+          valid = false;
         }
+      });
 
-        if (!changeset.get('osversion.id')) {
-          changeset.set('osversion', this.get('defaultVersion'));
-        }
+      if (!valid) {
+        return false;
+      }
 
-        this.get('store').findAll('instance').then(function (instanceList) {
-          let valid = true;
-          instanceList.forEach((existingInstance) => {
-            if (existingInstance.get('id') && existingInstance.get('domain').toLowerCase() === changeset.get('domain').toLowerCase()) {
-              changeset.addError('slug', ['already taken']);
-              valid = false;
-            }
-          });
-          if (!valid) {
-            return false;
-          }
+      if (!changeset.get('isValid')) {
+        return false;
+      }
 
-          changeset.save().then(function (instance) {
-            this.sendAction('saved', instance);
-          }.bind(this));
+      if (!changeset.get('osversion.id')) {
+        changeset.set('osversion', this.get('defaultVersion'));
+      }
 
-        }.bind(this));
-      }.bind(this));
+      const instance = await changeset.save();
+      this.sendAction('saved', instance);
     }
   }
 });

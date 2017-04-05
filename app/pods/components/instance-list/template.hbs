@@ -1,14 +1,15 @@
 <table class="table table-striped table-bordered table-hover">
   <thead>
   <tr>
-    <th>{{t 'event-name'}}</th>
+    <th>{{t 'instance.event-name'}}</th>
     <th>URL</th>
     <th>{{t 'instance-status'}}</th>
   </tr>
   </thead>
   <tbody>
   {{#each sortedInstances as |instance|}}
-    {{instance-list-item instance=instance update='update' removeInstance='removeInstance'}}
+    {{instance-list-item instance=instance update='update' removeInstance='removeInstance'
+                         upgradeInstance='upgradeInstance'}}
   {{/each}}
   </tbody>
 </table>

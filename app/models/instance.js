@@ -1,6 +1,5 @@
 import DS from 'ember-data';
 import Ember from 'ember';
-import config from '../config/environment';
 
 function replaceSpecialChars(adminFirstName) {
   return adminFirstName.replace(/[áàâä]/g, 'a')
@@ -15,7 +14,7 @@ export default DS.Model.extend({
     return this.get('slug') + '.' + this.get('parent_domain');
   }.property('parent_domain', 'slug'),
   db: DS.attr('string', { defaultValue: 'postgresql' }),
-  mode: DS.attr('string', { defaultValue: 'subdomain'}),
+  mode: DS.attr('string', { defaultValue: 'subdomain_nossl'}),
 
   volumes: DS.hasMany('instance-volume'),
 
@@ -40,8 +39,8 @@ export default DS.Model.extend({
   admin_last_name: DS.attr('string'),
   admin_username: DS.attr('string'),
   admin_user_name: function() {
-    var adminFirstName = this.get('admin_first_name') || '';
-    var adminLastName = this.get('admin_last_name') || '';
+    const adminFirstName = this.get('admin_first_name') || '';
+    const adminLastName = this.get('admin_last_name') || '';
     return replaceSpecialChars(adminLastName) + replaceSpecialChars(adminFirstName);
   }.property('admin_first_name', 'admin_last_name'),
   admin_initial_password: DS.attr('string'),
