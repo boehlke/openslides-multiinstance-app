@@ -14,7 +14,7 @@ export default DS.Model.extend({
     return this.get('slug') + '.' + this.get('parent_domain');
   }.property('parent_domain', 'slug'),
   db: DS.attr('string', { defaultValue: 'postgresql' }),
-  mode: DS.attr('string', { defaultValue: 'subdomain_nossl'}),
+  mode: DS.attr('string', { defaultValue: 'subdomain'}),
 
   volumes: DS.hasMany('instance-volume'),
 
