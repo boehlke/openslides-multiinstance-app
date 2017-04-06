@@ -16,18 +16,6 @@ const validations = {
   'parent_domain': [
     validatePresence(true)
   ],
-  'event_description': [
-    validatePresence(true)
-  ],
-  'event_date': [
-    validatePresence(true)
-  ],
-  'event_location': [
-    validatePresence(true)
-  ],
-  'event_organizer': [
-    validatePresence(true)
-  ],
   'admin_first_name': [
     validatePresence(true)
   ],
@@ -42,6 +30,8 @@ export default Ember.Component.extend({
     return new Changeset(this.get('instance'), lookupValidator(validations), validations);
   }.property('instance'),
 
+  versionSort: 'id',
+  sortedVersions: Ember.computed.sort('versions', 'versionSort'),
   domainOptions: function () {
     const domainOptions = Ember.A([Ember.Object.create({
       id: null,
@@ -65,7 +55,7 @@ export default Ember.Component.extend({
       let valid = true;
       const domain = `${changeset.get('slug')}.${changeset.get('parent_domain')}`;
 
-      instanceList.forEach((existingInstance) => {
+      instanceList.forEach(function(existingInstance) {
         if (existingInstance.get('id') && existingInstance.get('domain').toLowerCase() === domain.toLowerCase()) {
           changeset.addError('slug', ['already taken']);
           valid = false;
@@ -78,10 +68,6 @@ export default Ember.Component.extend({
 
       if (!changeset.get('isValid')) {
         return false;
-      }
-
-      if (!changeset.get('osversion.id')) {
-        changeset.set('osversion', this.get('defaultVersion'));
       }
 
       const instance = await changeset.save();

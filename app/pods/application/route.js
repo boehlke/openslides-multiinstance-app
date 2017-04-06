@@ -6,7 +6,7 @@ export default Ember.Route.extend({
   },
   actions:  {
     upgradeInstance: function(instance) {
-      this.transitionTo('upgrade', instance.get('id'))
+      this.transitionTo('upgrade', instance.get('id'));
     }
   }
 });
