@@ -1,7 +1,7 @@
 <div id="content">
   {{outlet}}
 
-  {{#if (ifCond currentPath '!==' 'instance-add')}}
+  {{#if (if-cond currentPath '!==' 'instance-add')}}
     <div class="pull-right spacer-bottom">
       {{#link-to 'instance-add' class="btn btn-sm btn-primary"}}
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>

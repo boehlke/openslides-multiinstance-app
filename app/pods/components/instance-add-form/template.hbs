@@ -3,7 +3,7 @@
 <h3>{{t 'instance_data'}}</h3>
 {{#if changeset}}
   {{#form-for changeset submit=(action 'submit') as |f|}}
-    {{#if (ifCond (eq changeset.mode 'subdomain') '||' (eq changeset.mode 'subdomain_nossl'))}}
+    {{#if (if-cond (eq changeset.mode 'subdomain') '||' (eq changeset.mode 'subdomain_nossl'))}}
       {{f.text-field "slug"}}
       {{f.select-field "parent_domain" options=domainOptions
                        optionLabelPath="domain"
@@ -12,7 +12,7 @@
 
       <div class="form-field">
         <label class="form-field--label">{{t 'instance-url'}}</label>
-        {{#if (ifCond changeset.slug '&&' changeset.parent_domain)}}
+        {{#if (if-cond changeset.slug '&&' changeset.parent_domain)}}
           <span>https://{{changeset.slug}}.{{changeset.parent_domain}}</span>
         {{/if}}
       </div>
