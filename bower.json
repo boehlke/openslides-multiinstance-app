@@ -1,13 +1,12 @@
 {
   "name": "openslides-multiinstance-app",
   "dependencies": {
-    "ember": "~2.9.1",
+    "ember": "2.9.1",
     "ember-cli-shims": "0.1.1",
     "ember-cli-test-loader": "0.2.2",
     "ember-qunit-notifications": "0.1.0",
     "pretender": "^0.12.0",
     "ember-droplet": "~2.1.5",
-    "ember-modal-dialog": "git+https://github.com/allexsoftware/ember-modal-dialog.git#bc71fa3f1303f3d7838e43fe7d16307120f9c948",
     "bootstrap-sass": "~3.3.5"
   }
 }
