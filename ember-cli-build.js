@@ -9,6 +9,9 @@ module.exports = function(defaults) {
     extensions: ['js'],
     pretender: {
       enabled: true
+    },
+    babel: {
+      includePolyfill: true
     }
   });
 

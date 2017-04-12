@@ -6,6 +6,7 @@ function replaceSpecialChars(adminFirstName) {
     .replace(/[úùûü]/g, 'u')
     .replace(/[^A-Za-z0-9\-_]/g, '-');
 }
+
 export default DS.Model.extend({
   slug: DS.attr('string'),
   parent_domain: DS.attr('string'),
@@ -38,8 +39,8 @@ export default DS.Model.extend({
   admin_last_name: DS.attr('string'),
   admin_username: DS.attr('string'),
   admin_user_name: function() {
-    var adminFirstName = this.get('admin_first_name') || '';
-    var adminLastName = this.get('admin_last_name') || '';
+    const adminFirstName = this.get('admin_first_name') || '';
+    const adminLastName = this.get('admin_last_name') || '';
     return replaceSpecialChars(adminLastName) + replaceSpecialChars(adminFirstName);
   }.property('admin_first_name', 'admin_last_name'),
   admin_initial_password: DS.attr('string'),

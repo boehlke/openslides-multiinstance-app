@@ -6,8 +6,10 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('instance');
   this.route('instance-add');
+  this.route('upgrade', {
+    path: '/upgrade/:instance_id'
+  });
 });
 
 export default Router;
