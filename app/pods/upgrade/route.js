@@ -7,7 +7,7 @@ export default Ember.Route.extend({
     const versions = await this.get('store').findAll('osversion');
     return {
       instance: this.store.peekRecord('instance', instanceId),
-      versions: versions,
+      versions: versions
     };
   },
   actions: {

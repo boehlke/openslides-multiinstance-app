@@ -89,18 +89,19 @@
                 {{t 'action-start-instance'}}
               </button>
             {{/if}}
+
+            {{#unless (eq instance.state 'installing')}}
+              <button type="button" class="btn btn-sm btn-default" disabled={{saving}}
+                    {{action 'upgradeInstance' instance}}>
+                <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                {{t 'action-upgrade-instance'}}
+              </button>
+            {{/unless}}
+
             <button type="button" class="btn btn-sm btn-danger" disabled={{saving}} {{action 'remove'}}>
               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
               {{t 'action-delete-instance'}}
             </button>
-
-            {{#unless (eq instance.state 'installing')}}
-              <button type="button" class="btn btn-sm btn-default" disabled={{saving}} {{action 'upgradeInstance'
-                                                                                                instance}}>
-                <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
-                {{t 'action-upgrade-instance'}}
-              </button>
-            {{/unless}}
           </div>
         </div>
       </div>

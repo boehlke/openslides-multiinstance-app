@@ -27,12 +27,13 @@ export default {
   'instance-details': 'Details',
   'action-stop-instance': 'Stoppen',
   'action-delete-instance': 'Löschen',
-  'action-upgrade': 'Upgrade',
+  'action-upgrade': 'Aktualisieren',
   'instance-status': 'Status',
+  'instances': 'Instanzen',
   'new': 'Neu',
-  'refresh': 'Aktualisieren',
+  'refresh': 'Neu laden',
   'action-start-instance': 'Starten',
-  'action-upgrade-instance': 'Upgrade',
+  'action-upgrade-instance': 'Aktualisieren',
   'new-instance': 'Neue OpenSlides-Instanz erstellen',
   'instance-url': 'Instanz-URL',
   'projector-logo': 'Projektor-Logo',
@@ -42,8 +43,8 @@ export default {
   'close': 'Schließen',
   'save': 'Speichern',
   'cancel': 'Abbrechen',
-  'no-upgrades-available': 'Kein Upgrade verfügbar',
+  'no-upgrades-available': 'Keine Aktualisierung verfügbar',
   'upload_projector_logo': 'Projektor-Logo hochladen',
   'still-installing': 'Das Erstellen kann bis zu 2 Minuten dauern. Warten Sie, bis der Status auf "active" steht. Laden Sie regelmäßig dise Seite neu, um den Status zu aktualisieren.',
-  'title-upgrade': 'Instanz {{instance}} upgraden'
+  'title-upgrade': 'Instanz <b>{{instance}}</b> aktualisieren auf...'
 };
