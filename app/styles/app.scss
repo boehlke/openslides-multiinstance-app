@@ -90,7 +90,6 @@ ul.context-menu-list {
   }
 }
 
-
 .context-menu-wrapper {
   width: 350px;
 }
@@ -148,21 +147,24 @@ ul.context-menu-list {
   background-color: black;
 }
 
-
 .form-field label {
   width: 220px;
 }
+
 .form-field--has-errors label, .form-field--errors {
   color: #a94442;
 }
+
 .form-field--has-errors .form-field--control {
   border-color: #a94442;
   border-width: 2px;
   border-style: solid;
 }
+
 .form-field--errors, .form-field--errors div {
   display: inline;
 }
+
 .form-field--errors div {
   font-size: 85%;
 }
@@ -191,6 +193,7 @@ td {
   width: 100%;
   margin: 0 auto 0 auto;
 }
+
 #header {
   float: left;
   width: 100%;
@@ -198,18 +201,36 @@ td {
   background: #002c42;
   color: #999;
 }
+
 #content {
   float: left;
   width: 100%;
   margin-top: 20px;
   padding: 0 30px;
 }
+
 #header .logo {
   float: left;
   height: 35px;
   padding-left: 30px;
 }
+
 #header .title {
   font-size: 22px;
   padding-top: 2px;
+}
+
+.results-table {
+  background: #f4f4f4;
+  border: 1px solid #cecece;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.results-table th span {
+  color: #e3e3e3;
+}
+
+.results-table .sorted {
+  color: #000000;
 }
