@@ -1,5 +1,4 @@
 /*globals Droplet*/
 import Ember from 'ember';
 
-export default Ember.Component.extend(Droplet.Preview, {
-});
+export default Ember.Component.extend(Droplet.Preview, {});

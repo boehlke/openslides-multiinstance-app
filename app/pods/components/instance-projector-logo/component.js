@@ -7,10 +7,10 @@ export default Ember.Component.extend({
       this.set('isShowingModal', false);
       this.sendAction('uploaded');
     },
-    removeProjectorLogo: function() {
+    removeProjectorLogo: function () {
       this.set('model.projector_logo', null);
     },
-    uploadProjectorLogo: function() {
+    uploadProjectorLogo: function () {
       this.set('isShowingModal', true);
     }
   }

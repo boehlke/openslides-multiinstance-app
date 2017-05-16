@@ -55,7 +55,7 @@ export default Ember.Component.extend({
       let valid = true;
       const domain = `${changeset.get('slug')}.${changeset.get('parent_domain')}`;
 
-      instanceList.forEach(function(existingInstance) {
+      instanceList.forEach(function (existingInstance) {
         if (existingInstance.get('id') && existingInstance.get('domain').toLowerCase() === domain.toLowerCase()) {
           changeset.addError('slug', ['already taken']);
           valid = false;

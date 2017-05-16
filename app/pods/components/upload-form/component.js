@@ -3,7 +3,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend(Droplet, {
 
-  initFileTypes: function() {
+  initFileTypes: function () {
     this.get('options').mimeTypes = ['image/png'];
   }.on('init'),
 

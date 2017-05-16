@@ -23,8 +23,12 @@ export default Ember.Component.extend({
   sortedInstances: Ember.computed('savedInstances', 'sortedProperties.@each', 'sortAscending', function () {
     let sortedProperty = this.get('sortedProperties')[0];
     let fnCompare = this.get('sortAscending') ?
-      function(a, b) { return sortFunctions[sortedProperty](a, b); } :
-      function (a, b) { return sortFunctions[sortedProperty](b, a);};
+      function (a, b) {
+        return sortFunctions[sortedProperty](a, b);
+      } :
+      function (a, b) {
+        return sortFunctions[sortedProperty](b, a);
+      };
     return this.get('savedInstances').sort(fnCompare);
   }),
   sortedOnName: Ember.computed('sortedProperties.[]', function () {
@@ -67,7 +71,7 @@ export default Ember.Component.extend({
       this.sendAction('update');
     },
     sortBy: function (property) {
-      if(this.get('sortedProperties')[0] === property) {
+      if (this.get('sortedProperties')[0] === property) {
         this.toggleProperty('sortAscending');
       } else {
         this.set('sortAscending', true);
