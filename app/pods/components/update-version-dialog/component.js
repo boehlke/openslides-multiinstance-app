@@ -17,6 +17,9 @@ export default Ember.Component.extend({
     const currentVersion = this.get('instance.osversion');
     return parseInt(currentVersion.get('id')) < parseInt(version.get('id'));
   }),
+  upgradeSortedVersionOptions: Ember.computed.sort('upgradeVersionOptions', function (a, b) {
+    return a.get('id') - b.get('id');
+  }),
   actions: {
     close: function () {
       this.sendAction('close', this);
