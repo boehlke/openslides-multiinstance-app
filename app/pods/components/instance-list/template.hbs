@@ -4,8 +4,18 @@
   <tr>
     <th {{action "sortBy" "name"}}>{{t 'instance.event-name'}}
       <span class="glyphicon {{glyphiconDirection}} {{if sortedOnName 'sorted'}}"></span></th>
-    <th {{action "sortBy" "version"}}>{{t 'instance.osversion'}}
-      <span class="glyphicon {{glyphiconDirection}} {{if sortedOnVersion 'sorted'}}"></span></th>
+    <th>
+      <div style="display: inline" {{action "sortBy" "version"}}>
+        {{t 'instance.osversion'}}
+        <span class="glyphicon {{glyphiconDirection}} {{if sortedOnVersion 'sorted'}}"></span>
+      </div>
+      {{#x-select value=filteredVersion action=(action "filterVersion") class="instance-list-version-select" as |xs|}}
+        {{#xs.option}}---{{/xs.option}}
+        {{#each usedVersions as |version|}}
+          {{#xs.option value=version}}{{version.name}}{{/xs.option}}
+        {{/each}}
+      {{/x-select}}
+    </th>
     <th>URL</th>
     <th {{action "sortBy" "status"}}>{{t 'instance-status'}}
       <span class="glyphicon {{glyphiconDirection}} {{if sortedOnStatus 'sorted'}}"></span></th>

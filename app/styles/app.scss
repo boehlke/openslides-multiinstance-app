@@ -1,7 +1,6 @@
 @charset "UTF-8";
 @import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap-compass';
 @import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
-
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
 
@@ -233,4 +232,8 @@ td {
 
 .results-table .sorted {
   color: #000000;
+}
+
+.instance-list-version-select {
+  float: right;
 }

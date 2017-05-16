@@ -20,7 +20,17 @@ export default Ember.Component.extend({
     return !!instance.get('slug');
   }),
   sortedProperties: ['name'],
-  sortedInstances: Ember.computed('savedInstances', 'sortedProperties.@each', 'sortAscending', function () {
+  filteredInstances: Ember.computed('savedInstances.[]', 'filteredVersion', function () {
+    const savedInstances = this.get('savedInstances');
+    const filtedVersion = this.get('filteredVersion');
+    return savedInstances.filter(function(instance) {
+      if(!filtedVersion) {
+        return true;
+      }
+      return instance.get('osversion') === filtedVersion;
+    });
+  }),
+  sortedInstances: Ember.computed('filteredInstances.@each', 'sortedProperties.@each', 'sortAscending', function () {
     let sortedProperty = this.get('sortedProperties')[0];
     let fnCompare = this.get('sortAscending') ?
       function (a, b) {
@@ -29,7 +39,7 @@ export default Ember.Component.extend({
       function (a, b) {
         return sortFunctions[sortedProperty](b, a);
       };
-    return this.get('savedInstances').sort(fnCompare);
+    return this.get('filteredInstances').sort(fnCompare);
   }),
   sortedOnName: Ember.computed('sortedProperties.[]', function () {
     return this.get('sortedProperties')[0] === 'name';
@@ -77,6 +87,9 @@ export default Ember.Component.extend({
         this.set('sortAscending', true);
         this.set('sortedProperties', [property]);
       }
+    },
+    filterVersion: function (version) {
+      this.set('filteredVersion', version);
     }
   }
 });

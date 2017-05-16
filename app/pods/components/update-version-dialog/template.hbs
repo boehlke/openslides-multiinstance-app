@@ -13,9 +13,9 @@
 
   <div class="modal-body">
 
-    {{#if upgradeSortedVersionOptions.length}}
+    {{#if versions.length}}
       {{#form-for this submit=(action 'submit') as |f|}}
-        {{f.select-field "osversion" options=upgradeSortedVersionOptions optionLabelPath="name"}}
+        {{f.select-field "osversion" options=versions optionLabelPath="name"}}
 
         <p></p>
         <p>
