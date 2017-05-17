@@ -30,7 +30,7 @@ export default Ember.Component.extend({
     return new Changeset(this.get('instance'), lookupValidator(validations), validations);
   }.property('instance'),
 
-  versionSort: 'id',
+  versionSort: ['id'],
   sortedVersions: Ember.computed.sort('versions', 'versionSort'),
   domainOptions: function () {
     const domainOptions = Ember.A([Ember.Object.create({
