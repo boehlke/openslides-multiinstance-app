@@ -16,7 +16,7 @@
         {{/each}}
       {{/x-select}}
     </th>
-    <th>URL</th>
+    <th {{action "sortBy" "url"}}>URL <span class="glyphicon {{glyphiconDirection}} {{if sortedOnUrl 'sorted'}}"></span></th>
     <th {{action "sortBy" "status"}}>{{t 'instance-status'}}
       <span class="glyphicon {{glyphiconDirection}} {{if sortedOnStatus 'sorted'}}"></span></th>
   </tr>
