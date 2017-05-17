@@ -6,7 +6,7 @@ const UpgradeModel = Ember.Object.extend({
     return parseInt(currentVersion.get('id')) < parseInt(version.get('id'));
   }),
   upgradeSortedVersionOptions: Ember.computed.sort('upgradeVersionOptions', function (a, b) {
-    return a.get('id') - b.get('id');
+    return b.get('id') - a.get('id');
   })
 });
 
