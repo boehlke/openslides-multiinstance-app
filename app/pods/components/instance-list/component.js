@@ -4,6 +4,9 @@ const sortFunctions = {
   name: function (a, b) {
     return a.get('event_name').toLowerCase().localeCompare(b.get('event_name').toLowerCase());
   },
+  url: function (a, b) {
+    return a.get('url').localeCompare(b.get('url'));
+  },
   version: function (a, b) {
     return a.get('osversion.id') - b.get('osversion.id');
   },
@@ -43,6 +46,9 @@ export default Ember.Component.extend({
   }),
   sortedOnName: Ember.computed('sortedProperties.[]', function () {
     return this.get('sortedProperties')[0] === 'name';
+  }),
+  sortedOnUrl: Ember.computed('sortedProperties.[]', function () {
+    return this.get('sortedProperties')[0] === 'url';
   }),
   sortedOnVersion: Ember.computed('sortedProperties.[]', function () {
     return this.get('sortedProperties')[0] === 'version';
