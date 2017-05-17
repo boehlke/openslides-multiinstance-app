@@ -13,10 +13,6 @@ export default Ember.Component.extend({
   targetAttachment: 'top center',
   attachment: 'top center',
 
-  upgradeVersionOptions: Ember.computed.filter('versions', function (version) {
-    const currentVersion = this.get('instance.osversion');
-    return parseInt(currentVersion.get('id')) < parseInt(version.get('id'));
-  }),
   actions: {
     close: function () {
       this.sendAction('close', this);

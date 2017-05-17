@@ -3,10 +3,10 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   tagName: '',
   actions: {
-    toggleDetails: function() {
+    toggleDetails: function () {
       this.toggleProperty('detailsOpen');
     },
-    stop: function() {
+    stop: function () {
       this.set('instance.state', 'stopped');
       this.set('saving', true);
       this.get('instance').save().finally(() => {
@@ -14,7 +14,7 @@ export default Ember.Component.extend({
         this.sendAction('update');
       });
     },
-    start: function() {
+    start: function () {
       this.set('instance.state', 'active');
       this.set('saving', true);
       this.get('instance').save().finally(() => {
@@ -22,13 +22,13 @@ export default Ember.Component.extend({
         this.sendAction('update');
       });
     },
-    remove: function() {
+    remove: function () {
       this.sendAction('removeInstance', this.get('instance'));
     },
     uploaded: function () {
       this.get('instance').save();
     },
-    upgradeInstance: function() {
+    upgradeInstance: function () {
       this.sendAction('upgradeInstance', this.get('instance'));
     }
   }

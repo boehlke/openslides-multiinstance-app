@@ -1,5 +1,4 @@
-/* jshint ignore:start */
+/* global Droplet */
 import Ember from 'ember';
 
-export default Ember.Component.extend(Droplet.MultipleInput, {
-});
+export default Ember.Component.extend(Droplet.MultipleInput, {});

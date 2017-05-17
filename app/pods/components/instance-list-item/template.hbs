@@ -1,5 +1,6 @@
 <tr {{action 'toggleDetails'}}>
   <td>{{instance.event_name}}</td>
+  <td>{{instance.osversion.name}}</td>
   <td>
     {{#if (eq instance.state 'active')}}
       <a href={{instance.url}}>{{instance.url}}</a>
@@ -92,7 +93,7 @@
 
             {{#unless (eq instance.state 'installing')}}
               <button type="button" class="btn btn-sm btn-default" disabled={{saving}}
-                    {{action 'upgradeInstance' instance}}>
+                {{action 'upgradeInstance' instance}}>
                 <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
                 {{t 'action-upgrade-instance'}}
               </button>

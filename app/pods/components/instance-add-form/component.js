@@ -30,7 +30,7 @@ export default Ember.Component.extend({
     return new Changeset(this.get('instance'), lookupValidator(validations), validations);
   }.property('instance'),
 
-  versionSort: 'id',
+  versionSort: ['id'],
   sortedVersions: Ember.computed.sort('versions', 'versionSort'),
   domainOptions: function () {
     const domainOptions = Ember.A([Ember.Object.create({
@@ -55,7 +55,7 @@ export default Ember.Component.extend({
       let valid = true;
       const domain = `${changeset.get('slug')}.${changeset.get('parent_domain')}`;
 
-      instanceList.forEach(function(existingInstance) {
+      instanceList.forEach(function (existingInstance) {
         if (existingInstance.get('id') && existingInstance.get('domain').toLowerCase() === domain.toLowerCase()) {
           changeset.addError('slug', ['already taken']);
           valid = false;
