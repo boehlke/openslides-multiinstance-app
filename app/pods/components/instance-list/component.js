@@ -30,7 +30,7 @@ export default Ember.Component.extend({
       if(!filtedVersion) {
         return true;
       }
-      return instance.get('osversion') === filtedVersion;
+      return instance.get('osversion.id') === filtedVersion.get('id');
     });
   }),
   sortedInstances: Ember.computed('filteredInstances.@each', 'sortedProperties.@each', 'sortAscending', function () {
