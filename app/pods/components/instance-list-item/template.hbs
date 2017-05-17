@@ -14,15 +14,15 @@
   </td>
   <td>
     {{#if (eq instance.state 'active')}}
-      <span class="label label-success">active</span>
+      <span class="label label-success">{{t 'active'}}</span>
     {{else if (eq instance.state 'sleeping')}}
-      <span class="label label-default">sleeping</span>
+      <span class="label label-default">{{t 'sleeping'}}</span>
     {{else if (eq instance.state 'installing')}}
-      <span class="label label-danger">installing</span>
+      <span class="label label-danger">{{t 'installing'}}</span>
     {{else if (eq instance.state 'stopped')}}
-      <span class="label label-danger">stopped</span>
+      <span class="label label-danger">{{t 'stopped'}}</span>
     {{else if (eq instance.state 'error')}}
-      <span class="label label-danger">error</span>
+      <span class="label label-danger">{{t 'error'}}</span>
     {{/if}}
   </td>
 </tr>

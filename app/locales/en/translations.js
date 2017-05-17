@@ -43,5 +43,10 @@ export default {
   'cancel': 'Cancel',
   'upload_projector_logo': 'Upload projector logo',
   'still-installing': 'It can take up to two minutes to create the instance. Wait until the status is set to "active". Reload this page regularly to update the status.',
-  'title-upgrade': 'Upgrade instance {{instance}} to...'
+  'title-upgrade': 'Upgrade instance {{instance}} to...',
+  'active': 'active',
+  'sleeping': 'sleeping',
+  'installing': 'installing',
+  'stopped': 'stopped',
+  'error': 'error'
 };
