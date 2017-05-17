@@ -46,5 +46,10 @@ export default {
   'no-upgrades-available': 'Keine Aktualisierung verfügbar',
   'upload_projector_logo': 'Projektor-Logo hochladen',
   'still-installing': 'Das Erstellen kann bis zu 2 Minuten dauern. Warten Sie, bis der Status auf "active" steht. Laden Sie regelmäßig dise Seite neu, um den Status zu aktualisieren.',
-  'title-upgrade': 'Instanz <b>{{instance}}</b> aktualisieren auf...'
+  'title-upgrade': 'Instanz <b>{{instance}}</b> aktualisieren auf...',
+  'active': 'aktiv',
+  'sleeping': 'schlafend',
+  'installing': 'installiert',
+  'stopped': 'angehalten',
+  'error': 'Fehler'
 };
