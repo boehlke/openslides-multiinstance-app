@@ -18,7 +18,7 @@
       </div>
     {{/if}}
 
-    {{f.select-field "osversion" options=sortedVersions optionLabelPath="name"}}
+    {{f.select-field "osversion" options=sortedVersions includeBlank='---' optionLabelPath="name"}}
 
     <h3>{{t 'event_data'}}</h3>
 

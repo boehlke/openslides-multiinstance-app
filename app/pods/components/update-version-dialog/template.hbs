@@ -15,11 +15,11 @@
 
     {{#if versions.length}}
       {{#form-for this submit=(action 'submit') as |f|}}
-        {{f.select-field "osversion" options=versions optionLabelPath="name"}}
+        {{f.select-field "osversion" options=versions includeBlank='---' optionLabelPath="name"}}
 
         <p></p>
         <p>
-          {{#f.submit "Save" class="btn btn-primary"}}{{t 'action-upgrade'}}{{/f.submit}}
+          {{#f.submit "Save" disabled=(not osversion) class="btn btn-primary"}}{{t 'action-upgrade'}}{{/f.submit}}
           <a class="btn btn-default" {{action "close"}}>{{t 'cancel'}}</a>
         </p>
       {{/form-for}}
