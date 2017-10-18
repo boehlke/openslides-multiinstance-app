@@ -29,11 +29,6 @@ export default DS.Model.extend({
   event_location: DS.attr('string'),
   event_organizer: DS.attr('string'),
 
-  projector_logo: DS.attr('string'),
-  projector_logo_url: Ember.computed('projector_logo', function() {
-    return '/api/blobs/' + this.get('projector_logo');
-  }),
-
   // Admin Attributes
   admin_first_name: DS.attr('string'),
   admin_last_name: DS.attr('string'),
